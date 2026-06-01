@@ -27,9 +27,6 @@ export default function Contact() {
     setLoading(true)
     setError('')
 
-    // Initialize EmailJS (service ID, public key)
-    emailjs.init('YOUR_PUBLIC_KEY')
-
     const emailParams = {
       to_email: 'vincentelyuy5@gmail.com',
       from_name: `${formData.firstName} ${formData.lastName}`,
@@ -39,7 +36,6 @@ export default function Contact() {
     }
 
     try {
-      // Send email via EmailJS
       await emailjs.send(
         'service_wm4w9ow',
         'template_7azv6tt',
@@ -47,7 +43,6 @@ export default function Contact() {
         'Va76v6KUVo_IAjdBD'
       )
       
-      // Redirect to home on success
       navigate('/')
     } catch (err) {
       setError('Failed to send message.')
@@ -59,7 +54,6 @@ export default function Contact() {
   return (
     <main className="page-shell contact-page">
       <section className="content-grid">
-        {/* Contact Info Panel */}
         <article className="profile-card contact-info-card">
           <h1>Get In Touch</h1>
           <p>Feel free to reach out using the contact information below or submit the form to send me a message.</p>
@@ -77,7 +71,6 @@ export default function Contact() {
           </div>
         </article>
 
-        {/* Contact Form */}
         <article className="profile-card contact-form-card">
           <h2>Send a Message</h2>
           {error && <p style={{ color: '#ff6b6b', marginBottom: '1rem' }}>{error}</p>}
