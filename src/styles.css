@@ -538,19 +538,73 @@ button, .button { font: inherit; }
   color: #c7d0e5;
   line-height: 1.8;
 }
-@media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.references-page .page-panel {
+  margin-bottom: 2rem;
+  text-align: center;
 }
-@media (max-width: 720px) {
+.references-page .page-panel p {
+  max-width: 64ch;
+  margin: 0.8rem auto 0;
+  color: #b8c2d2;
+  line-height: 1.8;
+}
+.references-grid {
+  display: grid;
+  gap: 1.7rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.reference-card {
+  padding: 1.75rem;
+  border-radius: 24px;
+  background: rgba(10, 15, 25, 0.95);
+  border: 2px solid #00d9ff;
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.2), inset 0 0 10px rgba(0, 217, 255, 0.05);
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+.reference-card::before {
+  content: '< ';
+  position: absolute;
+  top: 1rem;
+  left: 1.2rem;
+  color: #00d9ff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.reference-card::after {
+  content: ' >';
+  position: absolute;
+  bottom: 1rem;
+  right: 1.2rem;
+  color: #00d9ff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.reference-card-header h2 {
+  margin: 0 0 0.25rem;
+}
+.reference-company,
+.reference-role {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.93rem;
+}
+.reference-text {
+  margin: 0;
+  color: #c7d0e5;
+  line-height: 1.85;
+}
+@media (max-width: 900px) {
+  .references-grid {
+    grid-template-columns: 1fr;
+  }
   .services-grid {
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 720px) {
   .page-shell { padding: 2rem 1.5rem; }
-  .content-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .site-header { padding: 1.1rem 1rem; }
