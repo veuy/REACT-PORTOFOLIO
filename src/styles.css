@@ -606,6 +606,150 @@ button, .button { font: inherit; }
 @media (max-width: 720px) {
   .page-shell { padding: 2rem 1.5rem; }
 }
+/* ===== Admin Dashboard ===== */
+.admin-dashboard .page-panel {
+  margin-bottom: 1.5rem;
+}
+.admin-dashboard .page-panel p {
+  max-width: 68ch;
+  margin: 0;
+  color: #b8c2d2;
+}
+.admin-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+.admin-links li {
+  padding: 1.2rem 1.5rem;
+  border-radius: 18px;
+  background: rgba(14, 18, 25, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.admin-links li:hover {
+  border-color: #58a6ff;
+  background: rgba(56, 139, 253, 0.06);
+}
+.admin-links a {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #d5e0ff;
+}
+
+/* ===== Admin Tables ===== */
+.admin-list-page .page-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.admin-list-page .page-panel h1 {
+  margin: 0;
+  flex: 1;
+}
+.admin-error {
+  width: 100%;
+  color: #ff7b72 !important;
+  margin: 0.5rem 0 0 !important;
+  font-size: 0.92rem;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(14, 18, 25, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+.admin-table th,
+.admin-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+.admin-table th {
+  background: rgba(56, 139, 253, 0.08);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #94a3b8;
+}
+.admin-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.admin-actions .button {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* ===== Danger Button ===== */
+.button-danger {
+  background: rgba(255, 123, 114, 0.12);
+  border: 1px solid rgba(255, 123, 114, 0.25);
+  color: #ff7b72;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.button-danger:hover {
+  background: rgba(255, 123, 114, 0.22);
+  border-color: rgba(255, 123, 114, 0.45);
+}
+
+/* ===== Admin Forms ===== */
+.admin-form-page .page-panel {
+  max-width: 640px;
+}
+.admin-form {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.admin-form .form-group {
+  display: grid;
+  gap: 0.6rem;
+}
+.admin-form .form-group label {
+  font-weight: 600;
+  color: #d5e0ff;
+  font-size: 0.95rem;
+}
+.admin-form .form-group input,
+.admin-form .form-group textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cdd9e5;
+  font: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.admin-form .form-group input:focus,
+.admin-form .form-group textarea:focus {
+  outline: none;
+  border-color: #58a6ff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.admin-form .form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+.admin-form .button {
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
 @media (max-width: 640px) {
   .site-header { padding: 1.1rem 1rem; }
   .site-nav { width: 100%; justify-content: flex-start; }

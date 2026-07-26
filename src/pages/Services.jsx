@@ -1,34 +1,34 @@
-const services = [
-  {
-    title: 'Full-Stack Development',
-    icon: '💻',
-    description: 'I build end-to-end applications that cover both frontend and backend. From designing intuitive user interfaces to implementing secure server-side logic and databases, I create complete solutions that are scalable, maintainable, and optimized for real-world use.',
-  },
-  {
-    title: 'Web Development',
-    icon: '🌐',
-    description: 'I develop responsive, accessible, and visually clean websites using modern web technologies. Whether it’s a personal site, landing page, or web app, I focus on performance, usability, and clean code to create fast experiences that look great on all devices.',
-  },
-  {
-    title: 'Mobile App Development',
-    icon: '📱',
-    description: 'I design and build mobile applications with smooth user experiences and practical functionality. Using cross-platform tools like React Native, I create apps that run on both iOS and Android with a single codebase.',
-  },
-]
+import { useEffect, useState } from 'react'
+import { servicesApi } from '../api'
+
+const icons = ['💻', '🌐', '📱', '⚙️', '🔧', '🚀', '📊', '🎨']
 
 export default function Services() {
+  const [services, setServices] = useState([])
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    servicesApi
+      .getAll()
+      .then(setServices)
+      .catch((err) => setError(err.message))
+  }, [])
+
   return (
     <main className="page-shell services-page">
       <section className="page-panel">
         <h1>Services</h1>
         <p>These are the core capabilities I offer for digital product development, from application architecture to polished user experiences.</p>
+        {error && <p className="admin-error">{error}</p>}
       </section>
 
       <section className="services-grid">
-        {services.map((service) => (
-          <article key={service.title} className="service-card">
+        {services.map((service, i) => (
+          <article key={service._id} className="service-card">
             <div className="service-card-header">
-              <span className="service-icon" aria-hidden="true">{service.icon}</span>
+              <span className="service-icon" aria-hidden="true">
+                {service.icon || icons[i % icons.length]}
+              </span>
               <h2>{service.title}</h2>
             </div>
             <p>{service.description}</p>

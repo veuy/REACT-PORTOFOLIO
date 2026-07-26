@@ -1,39 +1,28 @@
-import zedImage from '../assets/ZedMmo.png'
-import brainrotiedImage from '../assets/Brainrotied.png'
-import camelImage from '../assets/CamelAlaPakaDuck.png'
-
-const projectList = [
-  {
-    title: 'ZedMMO',
-    description: 'A multiplayer zombie survival game where players scavenge for resources, build fortified bases, and fight to survive in a persistent post-apocalyptic world.',
-    tech: ['Unity', 'C#', 'Java', 'Spring Boot', 'Netty', 'PostgreSQL', 'AWS', 'Blender'],
-    image: zedImage,
-  },
-  {
-    title: 'Brainrotied',
-    description: 'A gamified productivity app that helps users reduce screen time through focus challenges, streaks, achievements, and brainrot-themed rewards.',
-    tech: ['Kotlin', 'Jetpack Compose', 'Java', 'Spring Boot', 'REST API', 'PostgreSQL', 'FCM', 'Figma', 'Git'],
-    image: brainrotiedImage,
-  },
-  {
-    title: 'CamelAlaPakaDuck',
-    description: 'A gamified language-learning platform that teaches animal names, sounds, and phonetics through rapid-fire mini-games.',
-    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Java', 'Spring Boot', 'PostgreSQL', 'Firebase Auth', 'Web Speech API', 'Docker', 'AWS', 'Figma', 'Git', 'GitHub'],
-    image: camelImage,
-  },
-]
+import { useEffect, useState } from 'react'
+import { projectsApi } from '../api'
 
 export default function Projects() {
+  const [projectList, setProjectList] = useState([])
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    projectsApi
+      .getAll()
+      .then(setProjectList)
+      .catch((err) => setError(err.message))
+  }, [])
+
   return (
     <main className="page-shell projects-page">
       <section className="page-panel">
         <h1>Projects</h1>
         <p>Explore some of my recent work, including games, productivity tools, and interactive learning experiences.</p>
+        {error && <p className="admin-error">{error}</p>}
       </section>
 
       <section className="project-grid">
         {projectList.map((project) => (
-          <article key={project.title} className="project-card">
+          <article key={project._id} className="project-card">
             <div className="project-card-media">
               <img src={project.image} alt={project.title} className="project-image" />
               <div className="project-card-title">{project.title}</div>
@@ -41,13 +30,13 @@ export default function Projects() {
 
             <div className="project-card-body">
               <p className="project-description">{project.description}</p>
-              <div className="project-stack-label">Tech Stack</div>
+              <div className="project-stack-label">Completion</div>
               <div className="project-tags">
-                {project.tech.map((tag) => (
-                  <span key={tag} className="project-tag">
-                    {tag}
-                  </span>
-                ))}
+                <span className="project-tag">
+                  {project.completion
+                    ? new Date(project.completion).toLocaleDateString()
+                    : '—'}
+                </span>
               </div>
             </div>
           </article>
