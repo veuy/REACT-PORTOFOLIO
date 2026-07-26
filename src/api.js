@@ -1,5 +1,5 @@
 // src/api.js
-const BASE_URL = "http://localhost:3000/api"; // change to your deployed backend URL later
+const BASE_URL = "https://portofolio-backend-848s.onrender.com/api";
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
