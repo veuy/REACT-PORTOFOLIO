@@ -47,19 +47,19 @@ export default function ServiceList() {
         </thead>
         <tbody>
           {services.map((s) => (
-            <tr key={s._id}>
+            <tr key={s._id || s.id}>
               <td>{s.title}</td>
               <td>{s.description}</td>
               <td className="admin-actions">
                 <Link
                   className="button button-secondary"
-                  to={`/admin/services/${s._id}/edit`}
+                  to={`/admin/services/${s._id || s.id}/edit`}
                 >
                   Edit
                 </Link>
                 <button
                   className="button button-danger"
-                  onClick={() => handleDelete(s._id)}
+                  onClick={() => handleDelete(s._id || s.id)}
                 >
                   Delete
                 </button>

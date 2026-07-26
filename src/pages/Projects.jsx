@@ -22,7 +22,7 @@ export default function Projects() {
 
       <section className="project-grid">
         {projectList.map((project) => (
-          <article key={project._id} className="project-card">
+          <article key={project._id || project.id} className="project-card">
             <div className="project-card-media">
               <img src={project.image} alt={project.title} className="project-image" />
               <div className="project-card-title">{project.title}</div>

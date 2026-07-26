@@ -47,7 +47,7 @@ export default function ProjectList() {
         </thead>
         <tbody>
           {projects.map((p) => (
-            <tr key={p._id}>
+            <tr key={p._id || p.id}>
               <td>{p.title}</td>
               <td>
                 {p.completion
@@ -57,13 +57,13 @@ export default function ProjectList() {
               <td className="admin-actions">
                 <Link
                   className="button button-secondary"
-                  to={`/admin/projects/${p._id}/edit`}
+                  to={`/admin/projects/${p._id || p.id}/edit`}
                 >
                   Edit
                 </Link>
                 <button
                   className="button button-danger"
-                  onClick={() => handleDelete(p._id)}
+                  onClick={() => handleDelete(p._id || p.id)}
                 >
                   Delete
                 </button>

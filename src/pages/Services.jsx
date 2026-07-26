@@ -24,7 +24,7 @@ export default function Services() {
 
       <section className="services-grid">
         {services.map((service, i) => (
-          <article key={service._id} className="service-card">
+          <article key={service._id || service.id} className="service-card">
             <div className="service-card-header">
               <span className="service-icon" aria-hidden="true">
                 {service.icon || icons[i % icons.length]}

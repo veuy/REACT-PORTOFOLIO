@@ -22,7 +22,7 @@ export default function References() {
 
       <section className="references-grid">
         {references.map((item) => (
-          <article key={item._id} className="reference-card">
+          <article key={item._id || item.id} className="reference-card">
             <div className="reference-card-header">
               <h2>{item.name}</h2>
               <p className="reference-role">{item.position}</p>

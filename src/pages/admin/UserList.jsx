@@ -48,20 +48,20 @@ export default function UserList() {
         </thead>
         <tbody>
           {users.map((u) => (
-            <tr key={u._id}>
+            <tr key={u._id || u.id}>
               <td>{u.firstname}</td>
               <td>{u.lastname}</td>
               <td>{u.email}</td>
               <td className="admin-actions">
                 <Link
                   className="button button-secondary"
-                  to={`/admin/users/${u._id}/edit`}
+                  to={`/admin/users/${u._id || u.id}/edit`}
                 >
                   Edit
                 </Link>
                 <button
                   className="button button-danger"
-                  onClick={() => handleDelete(u._id)}
+                  onClick={() => handleDelete(u._id || u.id)}
                 >
                   Delete
                 </button>

@@ -48,20 +48,20 @@ export default function ReferenceList() {
         </thead>
         <tbody>
           {references.map((r) => (
-            <tr key={r._id}>
+            <tr key={r._id || r.id}>
               <td>{r.name}</td>
               <td>{r.position}</td>
               <td>{r.company}</td>
               <td className="admin-actions">
                 <Link
                   className="button button-secondary"
-                  to={`/admin/references/${r._id}/edit`}
+                  to={`/admin/references/${r._id || r.id}/edit`}
                 >
                   Edit
                 </Link>
                 <button
                   className="button button-danger"
-                  onClick={() => handleDelete(r._id)}
+                  onClick={() => handleDelete(r._id || r.id)}
                 >
                   Delete
                 </button>
