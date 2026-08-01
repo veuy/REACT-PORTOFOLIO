@@ -1,8 +1,8 @@
 describe("Sign In", () => {
   // Assumes you have a user created beforehand (e.g. from signup.cy.js or a pre-existing account)
   // Replace these credentials with a known valid account or use the signup test first
-  const email = "admin@example.com";
-  const password = "admin123";
+  const email = Cypress.env("userEmail");
+  const password = Cypress.env("userPassword");
 
   it("should sign in and redirect to admin dashboard", () => {
     cy.visit("/signin");

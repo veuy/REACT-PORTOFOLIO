@@ -7,8 +7,8 @@ describe("Add Project", () => {
     cy.visit("/signin");
     // Use credentials that match an existing user in your database
     // Replace with actual test credentials or use signup to create one
-    cy.get("#email").type("admin@example.com");
-    cy.get("#password").type("admin123");
+    cy.get("#email").type(Cypress.env("userEmail"));
+    cy.get("#password").type(Cypress.env("userPassword"));
     cy.get("button[type='submit']").click();
     cy.url().should("include", "/admin");
   });

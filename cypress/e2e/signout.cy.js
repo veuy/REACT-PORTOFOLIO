@@ -2,8 +2,8 @@ describe("Sign Out", () => {
   beforeEach(() => {
     // Sign in first
     cy.visit("/signin");
-    cy.get("#email").type("admin@example.com");
-    cy.get("#password").type("admin123");
+    cy.get("#email").type(Cypress.env("userEmail"));
+    cy.get("#password").type(Cypress.env("userPassword"));
     cy.get("button[type='submit']").click();
     cy.url().should("include", "/admin");
   });
