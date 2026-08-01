@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "../../api";
 
 const sections = [
   { label: "Manage Projects", path: "/admin/projects" },
@@ -8,6 +9,14 @@ const sections = [
 ];
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut();
+    navigate("/");
+    window.location.reload(); // refresh to update nav bar
+  };
+
   return (
     <main className="page-shell admin-dashboard">
       <section className="page-panel">
@@ -22,6 +31,16 @@ export default function AdminDashboard() {
           </li>
         ))}
       </ul>
+
+      <div style={{ marginTop: "2rem" }}>
+        <button
+          className="button button-danger"
+          onClick={handleSignOut}
+          style={{ cursor: "pointer" }}
+        >
+          Sign Out
+        </button>
+      </div>
     </main>
   );
 }

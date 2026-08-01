@@ -5,6 +5,8 @@ import Projects from './pages/Projects'
 import Services from './pages/Services'
 import References from './pages/References'
 import Contact from './pages/Contact'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import ProjectList from './pages/admin/ProjectList'
 import ProjectForm from './pages/admin/ProjectForm'
@@ -14,6 +16,8 @@ import ReferenceList from './pages/admin/ReferenceList'
 import ReferenceForm from './pages/admin/ReferenceForm'
 import UserList from './pages/admin/UserList'
 import UserForm from './pages/admin/UserForm'
+import ProtectedRoute from './components/ProtectedRoute'
+import { isAuthenticated } from './api'
 import logoImage from './assets/logo.png'
 
 const navItems = [
@@ -23,7 +27,7 @@ const navItems = [
   { path: '/services', label: 'Services' },
   { path: '/references', label: 'References' },
   { path: '/contact', label: 'Contact' },
-  { path: '/admin', label: 'Admin' },
+  ...(isAuthenticated() ? [{ path: '/admin', label: 'Admin' }] : []),
 ]
 
 function App() {
@@ -58,19 +62,21 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/references" element={<References />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/projects" element={<ProjectList />} />
-        <Route path="/admin/projects/new" element={<ProjectForm />} />
-        <Route path="/admin/projects/:id/edit" element={<ProjectForm />} />
-        <Route path="/admin/services" element={<ServiceList />} />
-        <Route path="/admin/services/new" element={<ServiceForm />} />
-        <Route path="/admin/services/:id/edit" element={<ServiceForm />} />
-        <Route path="/admin/references" element={<ReferenceList />} />
-        <Route path="/admin/references/new" element={<ReferenceForm />} />
-        <Route path="/admin/references/:id/edit" element={<ReferenceForm />} />
-        <Route path="/admin/users" element={<UserList />} />
-        <Route path="/admin/users/new" element={<UserForm />} />
-        <Route path="/admin/users/:id/edit" element={<UserForm />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+        <Route path="/admin/projects" element={<ProtectedRoute><ProjectList /></ProtectedRoute>} />
+        <Route path="/admin/projects/new" element={<ProtectedRoute><ProjectForm /></ProtectedRoute>} />
+        <Route path="/admin/projects/:id/edit" element={<ProtectedRoute><ProjectForm /></ProtectedRoute>} />
+        <Route path="/admin/services" element={<ProtectedRoute><ServiceList /></ProtectedRoute>} />
+        <Route path="/admin/services/new" element={<ProtectedRoute><ServiceForm /></ProtectedRoute>} />
+        <Route path="/admin/services/:id/edit" element={<ProtectedRoute><ServiceForm /></ProtectedRoute>} />
+        <Route path="/admin/references" element={<ProtectedRoute><ReferenceList /></ProtectedRoute>} />
+        <Route path="/admin/references/new" element={<ProtectedRoute><ReferenceForm /></ProtectedRoute>} />
+        <Route path="/admin/references/:id/edit" element={<ProtectedRoute><ReferenceForm /></ProtectedRoute>} />
+        <Route path="/admin/users" element={<ProtectedRoute><UserList /></ProtectedRoute>} />
+        <Route path="/admin/users/new" element={<ProtectedRoute><UserForm /></ProtectedRoute>} />
+        <Route path="/admin/users/:id/edit" element={<ProtectedRoute><UserForm /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   )
